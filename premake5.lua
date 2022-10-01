@@ -24,6 +24,7 @@ project "spdlog"
 
 	filter "configurations:Debug"
 		runtime "Debug"
+		optimize "Off"
 		symbols "On"
 
 	filter "configurations:Release"
@@ -31,16 +32,12 @@ project "spdlog"
 		optimize "On"
 		symbols "Off"
 
-		flags
-		{
-			"LinkTimeOptimization"
-		}
-
 	filter "configurations:Dist"
 		runtime "Release"
 		optimize "On"
 		symbols "Off"
 
+	filter { ("configurations:Release" or "configurations:Dist") and "system:windows" }
 		flags
 		{
 			"LinkTimeOptimization"
