@@ -36,7 +36,13 @@ project "spdlog"
 		optimize "On"
 		symbols "Off"
 
-	filter { ("configurations:Release" or "configurations:Dist") and "system:windows" }
+	filter { "configurations:Release", "system:windows" }
+		flags
+		{
+			"LinkTimeOptimization"
+		}
+
+	filter { "configurations:Dist", "system:windows" }
 		flags
 		{
 			"LinkTimeOptimization"
